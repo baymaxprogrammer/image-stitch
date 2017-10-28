@@ -2,7 +2,7 @@
 import numpy as np
 import imutils
 import cv2
-from commons import commons
+from .commons import commons
 
 Commons = commons()
 

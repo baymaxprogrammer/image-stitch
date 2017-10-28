@@ -81,10 +81,11 @@ def main():
     (x, y, w, h) = rects[value.index(max(value))]
     this = cv2.rectangle(this, (x, y), (x + w, y + h), (255, 0, 255), 5)
 
-    with open('template/template.txt', 'r') as myfile:
-        data = myfile.read().replace('\n', '')
+    if value:
+        with open('template/template.txt', 'r') as myfile:
+            data = myfile.read().replace('\n', '')
 
-    cv2.putText(this, data, (y,x), cv2.FONT_HERSHEY_COMPLEX, 1, (255,0,255), 1)
+        cv2.putText(this, data, (y,x), cv2.FONT_HERSHEY_COMPLEX, 1, (255,0,255), 1)
 
     # Show the final result
     cv2.imshow("Image Final Detection", this)
