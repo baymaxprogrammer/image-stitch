@@ -24,8 +24,9 @@ In order to calculate a homography matrix for two images, a reasonably good set 
 	Keep largest set of inliers Re-compute least-squares H estimate using all inliers   
 
 ### Implementation Details of Image Stitching
-Most of the approached that uses SIFT and RANSAC to come of with a solution for image registration use extra information, such as the order of the images and number of them. The provided code alongside of this report is an effort to remove this restriction so that any set of images with reasonable overlapping can be used to create a larger image. In writing the code, OpenCV documentation and [rose2016] are used extensively. However, all the pieces came together without consulting anyone.
-Object detection and Classification
+Most of the approached that uses SIFT and RANSAC to come of with a solution for image registration use extra information, such as the order of the images and number of them. The provided code alongside of this report is an effort to remove this restriction so that any set of images with reasonable overlapping can be used to create a larger image. In writing the code, OpenCV documentation and [rose2016] are used extensively.
+
+### Object detection and Classification
 The second part of the project is related to object detection and classification of the final image. However deep learning approaches such as single shot detector (SSD) [liu2015] are shown to have superior performance in detecting multiple objects, given a specific scenario like images with front faces, back of the books, etc. which have robust features can be detected using histogram of gradient (HOG) feature and multiscale deformable part models [felzenszwalb2010], Haar feature detection [lienhart2002][ mita2005] , etc.
 Here a simple Haar cascade face detection models are used to detected the faces in the final stitched image. For objects that do not have rotational features like a car in different poses, Haar cascade models prove to be good for multiple object detection of a specific class. As the final step in this project, the detected objects (faces for instance) were compared with a library of images to find the matches. If a match exists, then one can fetch specific information regarding that object and shows it to the user.
 
