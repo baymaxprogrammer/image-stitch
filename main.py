@@ -12,7 +12,7 @@ def main():
     image_list = []
 
     # Loading all images in 'img' directory as cv.image format (numpy array in python)
-    for filename in glob.glob('img/faces/*.jpg'):  # assuming jpg of same size!
+    for filename in glob.glob('img/cars/*.jpg'):  # assuming jpg of same size!
         im = cv2.imread(filename)
         image_list.append(im)
 
@@ -77,11 +77,11 @@ def main():
             value.append(find_best.findValue(result[y:y + h, x:x + w], template))
             this = cv2.rectangle(itemgetter(0)(image_list), (x, y), (x + w, y + h), (255, 0, 0), 5)
 
-    # Select the maximum correlation index and load the related message
-    (x, y, w, h) = rects[value.index(max(value))]
-    this = cv2.rectangle(this, (x, y), (x + w, y + h), (255, 0, 255), 5)
-
     if value:
+        # Select the maximum correlation index and load the related message
+        (x, y, w, h) = rects[value.index(max(value))]
+        this = cv2.rectangle(this, (x, y), (x + w, y + h), (255, 0, 255), 5)
+
         with open('template/template.txt', 'r') as myfile:
             data = myfile.read().replace('\n', '')
 
