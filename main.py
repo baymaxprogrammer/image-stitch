@@ -77,6 +77,7 @@ def main():
             value.append(find_best.findValue(result[y:y + h, x:x + w], template))
             this = cv2.rectangle(itemgetter(0)(image_list), (x, y), (x + w, y + h), (255, 0, 0), 5)
 
+
     if value:
         # Select the maximum correlation index and load the related message
         (x, y, w, h) = rects[value.index(max(value))]
